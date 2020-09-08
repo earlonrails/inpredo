@@ -3,10 +3,21 @@ import matplotlib.pyplot as plt
 import mpl_finance
 import numpy as np
 import uuid
+import sys
+import alpaca_trade_api as tradeapi
 
 # Input your csv file here with historical data
+# ad = genfromtxt('../financial_data/eurusd.csv', delimiter=',' ,dtype=str)
+# python graphwerk.py SPY
+symbol = sys.argv[1] || 'SPY'
+api = tradeapi.REST()
+full_date = date+" "+start
+st = dt.datetime.strptime(full_date, '%Y-%m-%d %H:%M:%S')
+st = timezone('US/Eastern').localize(st)
+st = int(st.timestamp())*1000
+api.polygon.
+trades = api.polygon.historic_quotes_v2(symbol, date, offset=st, limit=ticks)
 
-ad = genfromtxt('../financial_data/eurusd.csv', delimiter=',' ,dtype=str)
 pd = np.flipud(ad)
 
 buy_dir = '../data/train/buy/'
